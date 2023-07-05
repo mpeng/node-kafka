@@ -7,6 +7,9 @@ const kafka = new Kafka({
 
 
 const producer = kafka.producer()
+const TOPIC = "greeting";
+let message = [ { value: {msg:"Nice",name:" Try!"} }, ];
+console.log( message );
 
 async function sendIT() {		
 		// Connect to the producer
@@ -14,10 +17,14 @@ async function sendIT() {
 
 		// Send an event to the demoTopic topic
 		await producer.send({
-		  topic: "demoTopic",
+		  topic: TOPIC,
 		  messages: [
-			{ value: 'Hello micro-services world!' },
+			{ value: "Hello !!!" },
 		  ],
+ 		  messages: [{
+        	value: JSON.stringify(message)
+      	  }]
+		  
 		});
 
 		// Disconnect the producer once we're done
@@ -25,3 +32,22 @@ async function sendIT() {
 }
 
 sendIT();
+
+
+const consumer = kafka.consumer({ groupId: 'test-group' })
+
+async function receiveIT() {
+		await consumer.connect()
+		await consumer.subscribe({ topic: TOPIC, fromBeginning: true })
+
+		await consumer.run({
+		  eachMessage: async ({ topic, partition, message }) => {
+			console.log({
+			  value: message.value.toString(),
+			})
+		  },
+		});
+}
+
+receiveIT();
+
