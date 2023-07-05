@@ -9,19 +9,19 @@ const kafka = new Kafka({
 const producer = kafka.producer()
 
 async function sendIT() {		
-// Connect to the producer
-await producer.connect()
+		// Connect to the producer
+		await producer.connect()
 
-// Send an event to the demoTopic topic
-await producer.send({
-  topic: "demoTopic",
-  messages: [
-    { value: 'Hello micro-services world!' },
-  ],
-});
+		// Send an event to the demoTopic topic
+		await producer.send({
+		  topic: "demoTopic",
+		  messages: [
+			{ value: 'Hello micro-services world!' },
+		  ],
+		});
 
-// Disconnect the producer once we're done
-await producer.disconnect();
+		// Disconnect the producer once we're done
+		await producer.disconnect();
 }
 
 sendIT();
