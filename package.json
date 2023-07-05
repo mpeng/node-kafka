@@ -1,0 +1,30 @@
+{
+  "name": "kafka",
+  "version": "1.0.0",
+  "description": "Use Node JS to create Kafka producer and consumer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpeng/node-kafka.git"
+  },
+  "keywords": [
+    "nodejs",
+    "node",
+    "kafka",
+    "broker",
+    "event",
+    "driven"
+  ],
+  "author": "mpeng",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mpeng/node-kafka/issues"
+  },
+  "homepage": "https://github.com/mpeng/node-kafka#readme",
+  "dependencies": {
+    "kafkajs": "^2.2.4"
+  }
+}
