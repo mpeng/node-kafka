@@ -42,7 +42,7 @@ async function receiveIT() {
 
 		await consumer.run({
 		  eachMessage: async ({ topic, partition, message }) => {
-			console.log({
+			console.log(topic, partition, {
 			  value: message.value.toString(),
 			})
 		  },
