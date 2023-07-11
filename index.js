@@ -2,13 +2,13 @@ const { Kafka } = require('kafkajs')
 
 const kafka = new Kafka({
   clientId: 'kafka-nodejs-starter',
-  brokers: ['localhost:9092'],
+  brokers: ['localhost:29092'],
 });
 
 
 const producer = kafka.producer()
 const TOPIC = "greeting";
-let message = [ { value: {msg:"Nice",name:" Try!"} }, ];
+let message = [ { value: {msg:"Lastname",name:" Smith"} }, ];
 console.log( message );
 
 async function sendIT() {		
@@ -42,7 +42,7 @@ async function receiveIT() {
 
 		await consumer.run({
 		  eachMessage: async ({ topic, partition, message }) => {
-			console.log(topic, partition, {
+			console.log("Consumer -> ", topic, partition, {
 			  value: message.value.toString(),
 			})
 		  },
